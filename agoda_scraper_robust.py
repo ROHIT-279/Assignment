@@ -99,13 +99,14 @@ class AgodaScraperRobust:
                 logger.error(f"Possible blocking detected. Page title: {self.driver.title}")
                 return False
             
-            # Multiple hotel detection strategies
+            # Multiple hotel detection strategies (enhanced with price container detection)
             hotel_selectors = [
                 'li[data-selenium="hotel-item"]',           # Original selector
                 '[data-selenium="hotel-item"]',             # More general
                 '.hotel-item',                              # Class-based
                 '[data-testid="property-card"]',            # Alternative data attribute
                 '.property-card',                           # Common class name
+                '[class*="PropertyCard"]',                  # Property card related to your price class
                 '[class*="hotel"]',                         # Any class containing "hotel"
                 '[class*="property"]',                      # Any class containing "property"
                 'article[data-selenium]',                   # Article elements with data-selenium
@@ -156,6 +157,9 @@ class AgodaScraperRobust:
             if len(found_keywords) >= 2:
                 logger.info("Page seems to have hotel-related content. Proceeding with extraction...")
                 self.save_debug_page("keyword_based_detection.html")
+                
+                # Additional check for pagination elements (indicates full page load)
+                self.check_pagination_loaded()
                 return True
             
             logger.error("No hotel content detected with any strategy")
@@ -166,19 +170,46 @@ class AgodaScraperRobust:
             self.debug_info["errors"].append(f"Page load error: {str(e)}")
             return False
     
+    def check_pagination_loaded(self):
+        """Check if pagination elements are loaded (indicates full page load)"""
+        try:
+            pagination_selectors = [
+                '.paginationContainer',
+                '.pagination2__next',
+                '.Buttonstyled__ButtonStyled-sc-5gjk6l-0',
+                '[class*="pagination"]'
+            ]
+            
+            for selector in pagination_selectors:
+                try:
+                    elements = self.driver.find_elements(By.CSS_SELECTOR, selector)
+                    if elements:
+                        logger.info(f"✅ Pagination found with selector: {selector} ({len(elements)} elements)")
+                        return True
+                except Exception:
+                    continue
+            
+            logger.info("ℹ️  No pagination elements found (might be single page results)")
+            return False
+            
+        except Exception as e:
+            logger.warning(f"Error checking pagination: {str(e)}")
+            return False
+    
     def detect_hotels_flexible(self):
         """Flexible hotel detection using multiple strategies"""
         soup = BeautifulSoup(self.driver.page_source, "html.parser")
         
-        # Strategy 1: Original selectors
+        # Strategy 1: Enhanced selectors (including your price-based detection)
         hotel_selectors = [
-            'li[data-selenium="hotel-item"]',
-            '[data-selenium="hotel-item"]',
-            'div[data-hotelid]',
-            '.hotel-item',
-            '[data-testid="property-card"]',
-            '.property-card',
-            'article[data-selenium]'
+            'li[data-selenium="hotel-item"]',                    # Original selector
+            '[data-selenium="hotel-item"]',                      # More general
+            'div[data-hotelid]',                                 # Direct hotel ID
+            '.hotel-item',                                       # Generic hotel item
+            '[data-testid="property-card"]',                     # Property card
+            '.property-card',                                    # Property card class
+            '[class*="PropertyCard"]',                           # Any PropertyCard class (related to your price)
+            'article[data-selenium]',                            # Article with data-selenium
         ]
         
         hotels_found = []
@@ -194,9 +225,28 @@ class AgodaScraperRobust:
                 logger.debug(f"Error with selector {selector}: {str(e)}")
                 continue
         
-        # Strategy 2: If no hotels found, try pattern matching
+        # Strategy 2: Price-based detection (using your specific price classes)
         if not hotels_found:
-            logger.info("No hotels found with standard selectors. Trying pattern matching...")
+            logger.info("No hotels found with standard selectors. Trying price-based detection...")
+            
+            # Look for elements containing your specific price classes
+            price_elements = soup.select('.PropertyCardPrice__Value, .PropertyCardPrice')
+            if price_elements:
+                logger.info(f"Found {len(price_elements)} price elements")
+                for price_elem in price_elements:
+                    # Find the parent container that likely contains hotel info
+                    for tag in ['div', 'article', 'li', 'section']:
+                        parent = price_elem.find_parent(tag)
+                        if parent and parent not in hotels_found:
+                            hotels_found.append(parent)
+                            break
+                
+                if hotels_found:
+                    logger.info(f"Found {len(hotels_found)} hotels using price-based detection")
+        
+        # Strategy 3: If no hotels found, try pattern matching
+        if not hotels_found:
+            logger.info("No hotels found with price detection. Trying pattern matching...")
             
             # Look for elements that might contain hotel data
             potential_hotels = []
@@ -214,7 +264,7 @@ class AgodaScraperRobust:
                 logger.info(f"Found {len(potential_hotels)} potential hotels using pattern matching")
                 hotels_found = potential_hotels[:50]  # Limit to avoid too many false positives
         
-        # Strategy 3: Text-based detection
+        # Strategy 4: Text-based detection
         if not hotels_found:
             logger.info("Trying text-based hotel detection...")
             
@@ -266,11 +316,14 @@ class AgodaScraperRobust:
                 'strong', 'b'
             ])
             
-            # Enhanced price extraction
+            # Enhanced price extraction (with your specific selectors)
             hotel_data["price"] = self.extract_text_flexible(hotel_element, [
-                '[data-selenium="hotel-price"]',
-                '.price', '[class*="price"]',
-                '[class*="rate"]', '[class*="cost"]'
+                '.PropertyCardPrice__Value',                                    # Your primary price selector
+                '.Box-sc-kv6pi1-0.bWGdbw.PropertyCardPrice.PropertyCardPrice--Display',  # Your full price class
+                '[class*="PropertyCardPrice"]',                                 # Any PropertyCardPrice class
+                '[data-selenium="hotel-price"]',                                # Original selector
+                '.price', '[class*="price"]',                                   # Generic price selectors
+                '[class*="rate"]', '[class*="cost"]'                           # Additional fallbacks
             ], patterns=[r'₹\s*[\d,]+', r'Rs\s*[\d,]+', r'INR\s*[\d,]+'])
             
             # Enhanced rating extraction
@@ -317,6 +370,12 @@ class AgodaScraperRobust:
             
             if hotel_data["name"]:
                 logger.info(f"Extracted: {hotel_data['name'][:30]}... | Category: {hotel_data['category'][:20]}... | Price: {hotel_data['price'][:15]}...")
+                
+                # Debug: Show which price selector worked
+                if hotel_data["price"]:
+                    logger.debug(f"Price found for {hotel_data['name'][:20]}: {hotel_data['price']}")
+                else:
+                    logger.debug(f"No price found for {hotel_data['name'][:20]}")
             
         except Exception as e:
             logger.error(f"Error extracting hotel data: {str(e)}")
@@ -443,15 +502,19 @@ class AgodaScraperRobust:
                 self.driver.execute_script(f"window.scrollTo(0, document.body.scrollHeight * {(i+1)/3});")
                 time.sleep(2)
             
-            # Try various load more mechanisms
+            # Try various load more mechanisms (with your specific selectors)
             load_more_selectors = [
-                'button[data-selenium="pagination-next-btn"]',
-                'button[aria-label="Next page"]',
-                '.pagination-next',
-                '.load-more-btn',
-                'button[class*="next"]',
-                'button[class*="load-more"]',
-                'a[class*="next"]'
+                '.Buttonstyled__ButtonStyled-sc-5gjk6l-0.jyyvGo.btn.pagination2__next',  # Your specific next button
+                '.paginationContainer button',                                            # Button in your pagination container
+                '.pagination2__next',                                                     # Your pagination next class
+                '.Buttonstyled__ButtonStyled-sc-5gjk6l-0.jyyvGo',                       # Your button style class
+                'button[data-selenium="pagination-next-btn"]',                           # Original selector
+                'button[aria-label="Next page"]',                                        # Accessibility selector
+                '.pagination-next',                                                      # Generic pagination
+                '.load-more-btn',                                                        # Load more button
+                'button[class*="next"]',                                                 # Any button with "next"
+                'button[class*="load-more"]',                                            # Any load more button
+                'a[class*="next"]'                                                       # Any link with "next"
             ]
             
             for selector in load_more_selectors:
@@ -527,6 +590,16 @@ class AgodaScraperRobust:
         print(f"   Errors: {len(self.debug_info['errors'])}")
         print(f"   Hotels Per Iteration: {self.debug_info['hotels_found_per_iteration']}")
         
+        # Price extraction analysis
+        prices_with_currency = len([h for h in self.hotels_data if h['price'] and any(symbol in h['price'] for symbol in ['₹', 'Rs', 'INR'])])
+        print(f"\n💰 PRICE EXTRACTION:")
+        print(f"   With Valid Currency: {prices_with_currency} ({prices_with_currency/total*100:.1f}%)")
+        
+        # Show sample prices
+        sample_prices = [h['price'] for h in self.hotels_data if h['price']][:5]
+        if sample_prices:
+            print(f"   Sample Prices: {', '.join(sample_prices)}")
+        
         # Category examples
         categories = [h['category'] for h in self.hotels_data if h['category']]
         if categories:
@@ -554,7 +627,16 @@ class AgodaScraperRobust:
                 logger.error(f"Error closing driver: {str(e)}")
 
 def main():
-    """Main execution with enhanced error handling"""
+    """
+    Main execution with enhanced error handling
+    
+    🔥 ENHANCED FEATURES:
+    ✅ Price Extraction: Uses .PropertyCardPrice__Value and .PropertyCardPrice classes
+    ✅ Next Page: Supports .pagination2__next and .paginationContainer navigation  
+    ✅ Category Extraction: [data-selenium="masterroom-title-name"] + fallbacks
+    ✅ Robust Detection: 4-layer hotel detection strategy
+    ✅ Advanced Pagination: Multiple pagination selector support
+    """
     url = "https://www.agoda.com/en-in/search?guid=ac34b805-fbbb-4a54-91f6-72bd44251297&asq=oSBZUdCJkTqIcAJrG1AX8Jufa9Vwpz6XltTHq4n%2B9gNpSLc%2BT%2BpB%2F8FnmmA8sOyAJ0WZY5hpLWEr%2Fk8qr78gW4DMS7e7llLtqq76yKsoLJ2OoQ3gw8ln%2FUAwfEcSpHO4IoT8r2EKxXsqX%2FNiA5fxsgqQMycviD3CIWSJVwpQ8sqLB7kVtS1F64bq7yiJpY541pwsBzifP5NpR6wrJ1u54kHb%2BKC2e3zym6tmyvlzCzM%3D&city=10863&tick=638881978745&locale=en-in&ckuid=0782016a-40d3-4e7a-86a4-8cab9dacec41&prid=0&gclid=Cj0KCQjw-NfDBhDyARIsAD-ILeBXva5TJhq-jGK3Si0BOfvtLo82iIstmv4-XMoqfU56Mshxz_UezUkaAhwMEALw_wcB&currency=INR&correlationId=55168ae7-8bc1-4224-a8eb-86ba246be729&analyticsSessionId=-1950121884218971931&pageTypeId=1&realLanguageId=15&languageId=1&origin=IN&stateCode=WB&cid=1922885&tag=6f147157-60b8-459f-af1a-9935d44970e9&userId=0782016a-40d3-4e7a-86a4-8cab9dacec41&whitelabelid=1&loginLvl=0&storefrontId=3&currencyId=27&currencyCode=INR&htmlLanguage=en-in&cultureInfoName=en-in&machineName=sg-pc-6h-acm-web-user-8697c4cd7c-gmgqx&trafficGroupId=5&trafficSubGroupId=122&aid=82361&useFullPageLogin=true&cttp=4&isRealUser=true&mode=production&browserFamily=Chrome&cdnDomain=agoda.net&checkIn=2025-08-12&checkOut=2025-08-13&rooms=1&adults=2&children=0&priceCur=INR&los=1&textToSearch=Darjeeling&travellerType=1&familyMode=off&ds=cgN73pCK5wrspJ7h&productType=-1"
     
     scraper = AgodaScraperRobust()
