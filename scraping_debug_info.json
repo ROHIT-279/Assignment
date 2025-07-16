@@ -1,0 +1,12 @@
+{
+  "page_loads": 1,
+  "errors": [],
+  "selectors_tried": [
+    "li[data-selenium=\"hotel-item\"]"
+  ],
+  "hotels_found_per_iteration": [
+    11,
+    11,
+    11
+  ]
+}

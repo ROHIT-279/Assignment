@@ -1,0 +1,10 @@
+hotel_id,name,price,rating,category,location,amenities,review_count,extraction_method
+16084521,Hotel Shangri-La Regency,,,+ FREE CANCELLATION,,"['Free WiFi', 'Free WiFi']",928 review,flexible
+535835,Central Heritage Resort & Spa (Formerly Fortune ITC Resort)  - The Mall Road,,,,,[],411 review,flexible
+647604,"Central Gleneagles Heritage Resort(Former Bungalow of Ex-TATA Chairman Russi Mody), Tha Mall Road",,,+ FREE CANCELLATION,,[],159 review,flexible
+1270258,Hotel Sonar Bangla Darjeeling,,,,,[],321 review,flexible
+32681001,Golden Oren Hotels and Spa,,,+ FREE CANCELLATION,,"['Golden Oren Hotels and Spa', 'Golden Oren Hotels and Spa', 'Free WiFi', 'Free WiFi']",104 review,flexible
+54518446,Goroomgo Broadway Boutique Mall Road Darjeeling,,,+ FREE CANCELLATION,,"['Free WiFi', 'Free WiFi']",43 review,flexible
+42201822,Mayfair Manor Jungpana,,,,,[],1 review,flexible
+66242797,Graham Hill homestay,,,+ FREE CANCELLATION,,"['Sparkling clean', 'Sparkling clean', 'Sparkling clean']",4 review,flexible
+64768117,Bina Home stay Darjeeling,,,+ FREE CANCELLATION,,"['Parking', 'Parking', 'Free WiFi', 'Free WiFi']",1 review,flexible

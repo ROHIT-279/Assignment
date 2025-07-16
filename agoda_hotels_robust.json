@@ -1,0 +1,121 @@
+[
+  {
+    "hotel_id": "16084521",
+    "name": "Hotel Shangri-La Regency",
+    "price": "",
+    "rating": "",
+    "category": "+ FREE CANCELLATION",
+    "location": "",
+    "amenities": [
+      "Free WiFi",
+      "Free WiFi"
+    ],
+    "review_count": "928 review",
+    "extraction_method": "flexible"
+  },
+  {
+    "hotel_id": "535835",
+    "name": "Central Heritage Resort & Spa (Formerly Fortune ITC Resort)  - The Mall Road",
+    "price": "",
+    "rating": "",
+    "category": "",
+    "location": "",
+    "amenities": [],
+    "review_count": "411 review",
+    "extraction_method": "flexible"
+  },
+  {
+    "hotel_id": "647604",
+    "name": "Central Gleneagles Heritage Resort(Former Bungalow of Ex-TATA Chairman Russi Mody), Tha Mall Road",
+    "price": "",
+    "rating": "",
+    "category": "+ FREE CANCELLATION",
+    "location": "",
+    "amenities": [],
+    "review_count": "159 review",
+    "extraction_method": "flexible"
+  },
+  {
+    "hotel_id": "1270258",
+    "name": "Hotel Sonar Bangla Darjeeling",
+    "price": "",
+    "rating": "",
+    "category": "",
+    "location": "",
+    "amenities": [],
+    "review_count": "321 review",
+    "extraction_method": "flexible"
+  },
+  {
+    "hotel_id": "32681001",
+    "name": "Golden Oren Hotels and Spa",
+    "price": "",
+    "rating": "",
+    "category": "+ FREE CANCELLATION",
+    "location": "",
+    "amenities": [
+      "Golden Oren Hotels and Spa",
+      "Golden Oren Hotels and Spa",
+      "Free WiFi",
+      "Free WiFi"
+    ],
+    "review_count": "104 review",
+    "extraction_method": "flexible"
+  },
+  {
+    "hotel_id": "54518446",
+    "name": "Goroomgo Broadway Boutique Mall Road Darjeeling",
+    "price": "",
+    "rating": "",
+    "category": "+ FREE CANCELLATION",
+    "location": "",
+    "amenities": [
+      "Free WiFi",
+      "Free WiFi"
+    ],
+    "review_count": "43 review",
+    "extraction_method": "flexible"
+  },
+  {
+    "hotel_id": "42201822",
+    "name": "Mayfair Manor Jungpana",
+    "price": "",
+    "rating": "",
+    "category": "",
+    "location": "",
+    "amenities": [],
+    "review_count": "1 review",
+    "extraction_method": "flexible"
+  },
+  {
+    "hotel_id": "66242797",
+    "name": "Graham Hill homestay",
+    "price": "",
+    "rating": "",
+    "category": "+ FREE CANCELLATION",
+    "location": "",
+    "amenities": [
+      "Sparkling clean",
+      "Sparkling clean",
+      "Sparkling clean"
+    ],
+    "review_count": "4 review",
+    "extraction_method": "flexible"
+  },
+  {
+    "hotel_id": "64768117",
+    "name": "Bina Home stay Darjeeling",
+    "price": "",
+    "rating": "",
+    "category": "+ FREE CANCELLATION",
+    "location": "",
+    "amenities": [
+      "Parking",
+      "Parking",
+      "Free WiFi",
+      "Free WiFi"
+    ],
+    "review_count": "1 review",
+    "extraction_method": "flexible"
+  }
+]
