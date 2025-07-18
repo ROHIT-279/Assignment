@@ -1,0 +1,186 @@
+[
+  {
+    "hotel_url": "https://www.agoda.com/en-in/central-heritage-resort-spa-darjeeling/hotel/darjeeling-in.html?countryId=35&finalPriceView=1&isShowMobileAppPrice=false&cid=1922885&numberOfBedrooms=&familyMode=false&adults=2&children=0&rooms=1&maxRooms=0&checkIn=2025-08-12&isCalendarCallout=false&childAges=&numberOfGuest=0&missingChildAges=false&travellerType=1&showReviewSubmissionEntry=false&currencyCode=INR&isFreeOccSearch=false&tag=6f147157-60b8-459f-af1a-9935d44970e9&tspTypes=7,9,8&los=1&searchrequestid=4d242625-a9b0-4b42-bafd-b3949b811e8a",
+    "hotel_name": "Central Heritage Resort & Spa (Formerly Fortune ITC Resort)  - The Mall Road",
+    "overall_rating": "Property's review score 6.9 out of 10 Good 1,415 reviews6.9Good1,415 reviews1,415 reviews",
+    "room_categories": [
+      {
+        "category": "",
+        "price": "32"
+      },
+      {
+        "category": "",
+        "price": "35"
+      },
+      {
+        "category": "",
+        "price": "32"
+      },
+      {
+        "category": "",
+        "price": "35"
+      },
+      {
+        "category": "",
+        "price": "34"
+      },
+      {
+        "category": "",
+        "price": "38"
+      },
+      {
+        "category": "",
+        "price": "51"
+      },
+      {
+        "category": "",
+        "price": "34"
+      },
+      {
+        "category": "",
+        "price": "38"
+      },
+      {
+        "category": "",
+        "price": "51"
+      },
+      {
+        "category": "",
+        "price": "34"
+      },
+      {
+        "category": "",
+        "price": "38"
+      },
+      {
+        "category": "",
+        "price": "51"
+      },
+      {
+        "category": "",
+        "price": "34"
+      },
+      {
+        "category": "",
+        "price": "38"
+      },
+      {
+        "category": "",
+        "price": "51"
+      },
+      {
+        "category": "",
+        "price": "34"
+      },
+      {
+        "category": "",
+        "price": "38"
+      },
+      {
+        "category": "",
+        "price": "51"
+      },
+      {
+        "category": "",
+        "price": "34"
+      },
+      {
+        "category": "",
+        "price": "38"
+      },
+      {
+        "category": "",
+        "price": "38"
+      },
+      {
+        "category": "",
+        "price": "42"
+      },
+      {
+        "category": "",
+        "price": "55"
+      },
+      {
+        "category": "",
+        "price": "41"
+      },
+      {
+        "category": "",
+        "price": "45"
+      },
+      {
+        "category": "",
+        "price": "58"
+      },
+      {
+        "category": "",
+        "price": "41"
+      },
+      {
+        "category": "",
+        "price": "45"
+      },
+      {
+        "category": "",
+        "price": "46"
+      },
+      {
+        "category": "",
+        "price": "50"
+      },
+      {
+        "category": "",
+        "price": "63"
+      },
+      {
+        "category": "",
+        "price": "136"
+      },
+      {
+        "category": "",
+        "price": "51"
+      },
+      {
+        "category": "",
+        "price": "55"
+      },
+      {
+        "category": "",
+        "price": "68"
+      },
+      {
+        "category": "",
+        "price": "51"
+      },
+      {
+        "category": "",
+        "price": "55"
+      },
+      {
+        "category": "",
+        "price": "68"
+      }
+    ],
+    "reviews": [],
+    "worker_id": "1-0",
+    "extraction_timestamp": "2025-07-18T16:41:44.946183"
+  },
+  {
+    "hotel_url": "https://www.agoda.com/en-in/deluxe-suite-room-shangrila-regency/hotel/darjeeling-in.html?countryId=35&finalPriceView=1&isShowMobileAppPrice=false&cid=1922885&numberOfBedrooms=&familyMode=false&adults=2&children=0&rooms=1&maxRooms=0&checkIn=2025-08-12&isCalendarCallout=false&childAges=&numberOfGuest=0&missingChildAges=false&travellerType=1&showReviewSubmissionEntry=false&currencyCode=INR&isFreeOccSearch=false&tag=6f147157-60b8-459f-af1a-9935d44970e9&tspTypes=2,8&los=1&searchrequestid=4d242625-a9b0-4b42-bafd-b3949b811e8a",
+    "hotel_name": "Hotel Shangri-La Regency",
+    "overall_rating": "Property's review score 7.9 out of 10 Very good 928 reviews7.9Very good928 reviews928 reviews",
+    "room_categories": [],
+    "reviews": [],
+    "worker_id": "1-1",
+    "extraction_timestamp": "2025-07-18T16:41:44.387785"
+  },
+  {
+    "hotel_url": "https://www.agoda.com/en-in/central-gleneagles-heritage-resort/hotel/darjeeling-in.html?countryId=35&finalPriceView=1&isShowMobileAppPrice=false&cid=1922885&numberOfBedrooms=&familyMode=false&adults=2&children=0&rooms=1&maxRooms=0&checkIn=2025-08-12&isCalendarCallout=false&childAges=&numberOfGuest=0&missingChildAges=false&travellerType=1&showReviewSubmissionEntry=false&currencyCode=INR&isFreeOccSearch=false&tag=6f147157-60b8-459f-af1a-9935d44970e9&los=1&searchrequestid=4d242625-a9b0-4b42-bafd-b3949b811e8a",
+    "hotel_name": "Central Gleneagles Heritage Resort(Former Bungalow of Ex-TATA Chairman Russi Mody), Tha Mall Road",
+    "overall_rating": "Property's review score 7.6 out of 10 Very good 159 reviews7.6Very good159 reviews159 reviews",
+    "room_categories": [],
+    "reviews": [],
+    "worker_id": "1-2",
+    "extraction_timestamp": "2025-07-18T16:41:43.716534"
+  }
+]

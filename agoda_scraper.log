@@ -1,0 +1,28 @@
+2025-07-18 16:41:20,156 - INFO - 🚀 Starting Agoda scraper at 2025-07-18 16:41:20.156892
+2025-07-18 16:41:20,157 - INFO - 📋 Phase 1: Extracting hotel URLs...
+2025-07-18 16:41:25,056 - WARNING - The geckodriver version (0.33.0) detected in PATH at /usr/local/bin/geckodriver might not be compatible with the detected firefox version (140.0.4); currently, geckodriver 0.36.0 is recommended for firefox 140.*, so it is advised to delete the driver in PATH and retry
+2025-07-18 16:41:26,444 - INFO - Loading search results page...
+2025-07-18 16:41:36,614 - INFO - Page 1: Found 3 new hotels (Total: 3)
+2025-07-18 16:41:41,736 - INFO - No more pages or pagination failed
+2025-07-18 16:41:41,736 - INFO - Total hotels found: 3, Total scrolls: 5
+2025-07-18 16:41:42,289 - INFO - 📊 Found 3 hotels to process
+2025-07-18 16:41:42,289 - INFO - 🔄 Processing batch 1/1
+2025-07-18 16:41:42,289 - INFO - Starting batch 1 with 3 hotels
+2025-07-18 16:41:42,312 - WARNING - The geckodriver version (0.33.0) detected in PATH at /usr/local/bin/geckodriver might not be compatible with the detected firefox version (140.0.4); currently, geckodriver 0.36.0 is recommended for firefox 140.*, so it is advised to delete the driver in PATH and retry
+2025-07-18 16:41:42,313 - WARNING - The geckodriver version (0.33.0) detected in PATH at /usr/local/bin/geckodriver might not be compatible with the detected firefox version (140.0.4); currently, geckodriver 0.36.0 is recommended for firefox 140.*, so it is advised to delete the driver in PATH and retry
+2025-07-18 16:41:42,315 - WARNING - The geckodriver version (0.33.0) detected in PATH at /usr/local/bin/geckodriver might not be compatible with the detected firefox version (140.0.4); currently, geckodriver 0.36.0 is recommended for firefox 140.*, so it is advised to delete the driver in PATH and retry
+2025-07-18 16:41:43,716 - INFO - Worker 1-2: Processing https://www.agoda.com/en-in/central-gleneagles-heritage-resort/hotel/darjeeling-in.html?countryId=35&finalPriceView=1&isShowMobileAppPrice=false&cid=1922885&numberOfBedrooms=&familyMode=false&adults=2&children=0&rooms=1&maxRooms=0&checkIn=2025-08-12&isCalendarCallout=false&childAges=&numberOfGuest=0&missingChildAges=false&travellerType=1&showReviewSubmissionEntry=false&currencyCode=INR&isFreeOccSearch=false&tag=6f147157-60b8-459f-af1a-9935d44970e9&los=1&searchrequestid=4d242625-a9b0-4b42-bafd-b3949b811e8a
+2025-07-18 16:41:44,387 - INFO - Worker 1-1: Processing https://www.agoda.com/en-in/deluxe-suite-room-shangrila-regency/hotel/darjeeling-in.html?countryId=35&finalPriceView=1&isShowMobileAppPrice=false&cid=1922885&numberOfBedrooms=&familyMode=false&adults=2&children=0&rooms=1&maxRooms=0&checkIn=2025-08-12&isCalendarCallout=false&childAges=&numberOfGuest=0&missingChildAges=false&travellerType=1&showReviewSubmissionEntry=false&currencyCode=INR&isFreeOccSearch=false&tag=6f147157-60b8-459f-af1a-9935d44970e9&tspTypes=2,8&los=1&searchrequestid=4d242625-a9b0-4b42-bafd-b3949b811e8a
+2025-07-18 16:41:44,946 - INFO - Worker 1-0: Processing https://www.agoda.com/en-in/central-heritage-resort-spa-darjeeling/hotel/darjeeling-in.html?countryId=35&finalPriceView=1&isShowMobileAppPrice=false&cid=1922885&numberOfBedrooms=&familyMode=false&adults=2&children=0&rooms=1&maxRooms=0&checkIn=2025-08-12&isCalendarCallout=false&childAges=&numberOfGuest=0&missingChildAges=false&travellerType=1&showReviewSubmissionEntry=false&currencyCode=INR&isFreeOccSearch=false&tag=6f147157-60b8-459f-af1a-9935d44970e9&tspTypes=7,9,8&los=1&searchrequestid=4d242625-a9b0-4b42-bafd-b3949b811e8a
+2025-07-18 16:42:12,889 - INFO - Worker 1-0: Successfully extracted data for Central Heritage Resort & Spa (Formerly Fortune ITC Resort)  - The Mall Road
+2025-07-18 16:42:13,481 - INFO - ✓ Completed: Central Heritage Resort & Spa (Formerly Fortune ITC Resort)  - The Mall Road
+2025-07-18 16:42:14,967 - INFO - Worker 1-2: Successfully extracted data for Central Gleneagles Heritage Resort(Former Bungalow of Ex-TATA Chairman Russi Mody), Tha Mall Road
+2025-07-18 16:42:15,025 - INFO - Worker 1-1: Successfully extracted data for Hotel Shangri-La Regency
+2025-07-18 16:42:15,624 - INFO - ✓ Completed: Hotel Shangri-La Regency
+2025-07-18 16:42:15,668 - INFO - ✓ Completed: Central Gleneagles Heritage Resort(Former Bungalow of Ex-TATA Chairman Russi Mody), Tha Mall Road
+2025-07-18 16:42:15,670 - INFO - 💾 Batch 1 saved to agoda_batch_1_20250718_164215.csv
+2025-07-18 16:42:15,670 - INFO - ✓ Data saved to agoda_hotels_final_20250718_164215.csv
+2025-07-18 16:42:15,671 - INFO - 🎉 Scraping completed!
+2025-07-18 16:42:15,671 - INFO - 📈 Total hotels processed: 3
+2025-07-18 16:42:15,671 - INFO - ⏱️  Total time: 0:00:55.514115
+2025-07-18 16:42:15,671 - INFO - 📁 Final output: agoda_hotels_final_20250718_164215.csv
