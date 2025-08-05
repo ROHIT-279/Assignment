@@ -262,7 +262,10 @@ class AgodaHotelScraper:
                     # Create hotel data dictionary with the provided field mapping
                     hotel_data = {
                         'property_id': f"{self.property_counter:02d}",
-                        'property_name': container.select_one('[data-selenium="hotel-name"]').get_text(strip=True) if container.select_one('[data-selenium="hotel-name"]') else None,
+                        'property_name': (
+                            container.select_one('span[class="sc-hKgILt Typographystyled__TypographyStyled-sc-1uoovui-0 kkDVzi eMpfYC TextLink__TextStyled-sc-upxc4y-0 fZAVxI"]').get_text(strip=True) if container.select_one('span[class="sc-hKgILt Typographystyled__TypographyStyled-sc-1uoovui-0 kkDVzi eMpfYC TextLink__TextStyled-sc-upxc4y-0 fZAVxI"]') else
+                            container.select_one('[data-selenium="hotel-name"]').get_text(strip=True) if container.select_one('[data-selenium="hotel-name"]') else None
+                        ),
                         'Platform': self.platform_from_url(search_url),
                         'property_type': container.select_one('div[data-testid="rating-container"]').get_text(strip=True) if container.select_one('div[data-testid="rating-container"]') else None,
                         'Location': container.select_one('span[data-selenium="hotel-address-map"]').get_text(strip=True) if container.select_one('span[data-selenium="hotel-address-map"]') else None,

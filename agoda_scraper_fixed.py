@@ -374,11 +374,18 @@ class AgodaHotelScraper:
                     hotel_data = {
                         'property_id': f"{self.property_counter:02d}",
                         'property_name': self.extract_text_from_selectors(container, [
+                            'span[class="sc-hKgILt Typographystyled__TypographyStyled-sc-1uoovui-0 kkDVzi eMpfYC TextLink__TextStyled-sc-upxc4y-0 fZAVxI"]',
+                            'span[class*="TextLink__TextStyled"]',
+                            'span[class*="TypographyStyled"]',
+                            'span[class*="sc-hKgILt"]',
                             '[data-selenium="hotel-name"]',
                             'h1', 'h2', 'h3',
                             '[class*="hotel-name"]',
                             '[class*="property-name"]',
-                            '[data-testid*="hotel-name"]'
+                            '[data-testid*="hotel-name"]',
+                            'a[href*="/hotel/"] span',
+                            '.property-name',
+                            '.hotel-name'
                         ]),
                         'Platform': self.platform_from_url(search_url),
                         'property_type': self.extract_text_from_selectors(container, [
